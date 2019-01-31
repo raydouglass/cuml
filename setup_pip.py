@@ -73,16 +73,20 @@ setup(name=name,
           "Programming Language :: Python :: 3.7"
       ],
       packages=find_packages(where='python'),
+      package_dir={
+          'cuML': 'python/cuML'
+      },
       author="NVIDIA Corporation",
       license='Apache 2.0',
       install_requires=install_requires,
       python_requires='>=3.6,<3.8',
-      ext_modules=cythonize(extensions),
+      # ext_modules=cythonize(extensions),
       cmdclass={
           'build_ext': CMakeBuildExt,
           'install_headers': InstallHeaders
       },
-      headers=['cuML/src/'],
+      headers=[
+          'cuML/src/'],
       zip_safe=False
       )
 
